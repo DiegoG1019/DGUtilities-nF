@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "DiegoG.nanoFramework.Logging", "DiegoG.nanoFramework.Logging\DiegoG.nanoFramework.Logging.nfproj", "{252DB690-DBDA-4A92-A57F-BAB581CD5D10}"
+EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Collections.NanoLinq", "nanoFramework.Collections.NanoLinq\nanoFramework.Collections.NanoLinq.nfproj", "{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252DB690-DBDA-4A92-A57F-BAB581CD5D10}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {630BBF24-4D8F-46C0-9A8B-549459872F5A}
+	EndGlobalSection
+EndGlobal

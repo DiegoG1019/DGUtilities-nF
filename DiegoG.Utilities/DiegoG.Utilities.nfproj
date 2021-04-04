@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <NanoFrameworkProjectSystemPath>$(MSBuildToolsPath)..\..\..\nanoFramework\v1.0\</NanoFrameworkProjectSystemPath>
   </PropertyGroup>
@@ -8,32 +8,38 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{11A8DD76-328B-46DF-9F39-F559912D0360};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>6eae8e8e-de48-4e7c-90d9-e8bfb1509d59</ProjectGuid>
+    <ProjectGuid>1b7a224b-001e-43d8-afb2-fa16286a1745</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <FileAlignment>512</FileAlignment>
-    <RootNamespace>nanoFramework.Collection.MiqroLinq</RootNamespace>
-    <AssemblyName>nanoFramework.Collection.MiqroLinq</AssemblyName>
+    <RootNamespace>DiegoG.Utilities</RootNamespace>
+    <AssemblyName>DiegoG.Utilities</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="Delegates.cs" />
-    <Compile Include="MicroLinq\CombinatorialEnumerable.cs" />
-    <Compile Include="MicroLinq\CombinatorialEnumerator.cs" />
-    <Compile Include="MicroLinq\ConditionalEnumerable.cs" />
-    <Compile Include="MicroLinq\ConditionalEnumerator.cs" />
-    <Compile Include="MicroLinq\Delegates.cs" />
-    <Compile Include="MicroLinq\ExtensionAttribute.cs" />
-    <Compile Include="MicroLinq\Extensions.cs" />
-    <Compile Include="NearlyGenericArrayList.cs" />
-    <Compile Include="Notifying.cs" />
-    <Compile Include="ParallelForEach.cs" />
-    <Compile Include="PrebuiltDelegates.cs" />
+    <Compile Include="nFUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueTypeArrayList.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="mscorlib, Version=1.10.3.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.10.3-preview.7\lib\mscorlib.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Events, Version=1.9.0.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\..\SANDBOX\nanoFramework\NFTest\packages\nanoFramework.Runtime.Events.1.9.0-preview.16\lib\nanoFramework.Runtime.Events.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="Windows.Devices.Wifi, Version=1.3.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\..\SANDBOX\nanoFramework\NFTest\packages\nanoFramework.Windows.Devices.Wifi.1.3.2-preview.26\lib\Windows.Devices.Wifi.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.CSharp.targets')" />

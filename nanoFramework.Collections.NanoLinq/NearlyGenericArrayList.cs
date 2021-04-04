@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Reflection;
 
-namespace System.Collections.NanoLinq
+namespace System.Collections
 {
     public class NearlyGenericArrayList
     {

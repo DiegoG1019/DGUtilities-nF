@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections;
 
-namespace System.Collections.NanoLinq.PrebuiltDelegates
+namespace nanoFramework.NanoLinq.PrebuiltDelegates
 {
     public static class PrebuiltDelegates
     {

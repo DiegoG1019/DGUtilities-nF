@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace System.Collections.NanoLinq
+namespace System.Collections
 {
     public delegate void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e);
 

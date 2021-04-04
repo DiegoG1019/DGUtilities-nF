@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace System.Collections.NanoLinq
+namespace nanoFramework.NanoLinq
 {
     /// <summary>
     /// Because the yield statement is broken for current C# and NETMF 4.1 we have to
@@ -18,9 +18,6 @@ namespace System.Collections.NanoLinq
             this.p = p;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new CombinatorialEnumerator(e.GetEnumerator(), p);
-        }
+        IEnumerator IEnumerable.GetEnumerator() => new CombinatorialEnumerator(e.GetEnumerator(), p);
     }
 }

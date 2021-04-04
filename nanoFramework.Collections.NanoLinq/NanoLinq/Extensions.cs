@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Reflection;
 
-namespace System.Collections.NanoLinq
+namespace nanoFramework.NanoLinq
 {
     public static class NanoLinqExtensions
     {
@@ -32,10 +32,7 @@ namespace System.Collections.NanoLinq
         /// <param name="e">The IEnumerable to iterate.</param>
         /// <param name="a">The delegate which is applied to each element.</param>
         /// <returns>An object that is the result of the aggregate being applied to each element.</returns>
-        public static object Aggregate(this IEnumerable e, Aggregate a)
-        {
-            return Aggregate(e, new object(), a);
-        }
+        public static object Aggregate(this IEnumerable e, Aggregate a) => Aggregate(e, new object(), a);
 
 
         /// <summary>
@@ -46,10 +43,7 @@ namespace System.Collections.NanoLinq
         /// <param name="a">The delegate which is applied to each element.</param>
         /// <param name="s">Optional. A selector delegate used to select the result from the seed.</param>
         /// <returns>An object that is the result of the aggregate being applied to each element.</returns>
-        public static object Aggregate(this IEnumerable e, Aggregate a, Selector s)
-        {
-            return s(Aggregate(e, a));
-        }
+        public static object Aggregate(this IEnumerable e, Aggregate a, Selector s) => s(Aggregate(e, a));
 
 
         /// <summary>
@@ -61,10 +55,7 @@ namespace System.Collections.NanoLinq
         /// <param name="a">The aggregate delegate which is applied to each element.</param>
         /// <param name="s">Optional. A selector delegate used to select the result from the seed.</param>
         /// <returns>An object that is the result of the aggregate being applied to each element.</returns>
-        public static object Aggregate(this IEnumerable e, object seed, Aggregate a, Selector s)
-        {
-            return s(Aggregate(e, seed, a));
-        }
+        public static object Aggregate(this IEnumerable e, object seed, Aggregate a, Selector s) => s(Aggregate(e, seed, a));
 
 
         /// <summary>
@@ -120,14 +111,7 @@ namespace System.Collections.NanoLinq
         /// </summary>
         /// <param name="e">The IEnumerable object of which you want to know the count.</param>
         /// <returns>The number of items in the IEnumerable.</returns>
-        public static int Count(this IEnumerable e)
-        {
-            ICollection list = e as ICollection;
-            if (list != null)
-                return list.Count;
-
-            return Count(e, o => true);
-        }
+        public static int Count(this IEnumerable e) => e is ICollection list ? list.Count : Count(e, o => true);
 
 
         /// <summary>
@@ -139,26 +123,40 @@ namespace System.Collections.NanoLinq
         public static int Count(this IEnumerable e, Predicate p)
         {
             int total = 0;
-
             foreach (var o in e)
-            {
                 if (p(o))
                     total++;
-            }
-
             return total;
         }
 
+        /// <summary>
+        /// Returns the first object in an IEnumerable or throws an exception if the collection is empty.
+        /// </summary>
+        /// <param name="e">The IEnumerable object from which to get the first object.</param>
+        /// <returns>The first object in an IEnumerable</returns>
+        /// <exception cref="InvalidOperationException">Thrown if the IEnumerable is empty</exception>
+        public static object First(this IEnumerable e) => First(e, o => true);
+
+        /// <summary>
+        /// Returns the first object in an IEnumerable or throws an exception if the collection is empty.
+        /// </summary>
+        /// <param name="e">The IEnumerable object from which to get the first object.</param>
+        /// <returns>The first object in an IEnumerable</returns>
+        /// <exception cref="InvalidOperationException">Thrown if the IEnumerable is empty</exception>
+        public static object First(this IEnumerable e, Predicate p)
+        {
+            foreach (var o in e)
+                if (p(o))
+                    return o;
+            throw new InvalidOperationException("The source sequence is empty.");
+        }
 
         /// <summary>
         /// Returns the first object in an IEnumerable or null if the collection is empty.
         /// </summary>
         /// <param name="e">The IEnumerable object from which to get the first object.</param>
         /// <returns>The first object in an IEnumerable or null if the IEnumerable is empty.</returns>
-        public static object FirstOrDefault(this IEnumerable e)
-        {
-            return FirstOrDefault(e, o => true);
-        }
+        public static object FirstOrDefault(this IEnumerable e) => FirstOrDefault(e, o => true);
 
 
         /// <summary>
@@ -172,7 +170,6 @@ namespace System.Collections.NanoLinq
             foreach (var o in e)
                 if (p(o))
                     return o;
-
             return null;
         }
 
@@ -183,10 +180,7 @@ namespace System.Collections.NanoLinq
         /// <param name="e">The IEnumerable object over which you want to Select.</param>
         /// <param name="a">The delegate to be applied to each element.</param>
         /// <returns>An IEnunumerable which will return objects after the delegate is applied.</returns>
-        public static IEnumerable Select(this IEnumerable e, ActionWithReturn a)
-        {
-            return new CombinatorialEnumerable(e, a);
-        }
+        public static IEnumerable Select(this IEnumerable e, ActionWithReturn a) => new CombinatorialEnumerable(e, a);
 
 
         /// <summary>
@@ -195,10 +189,7 @@ namespace System.Collections.NanoLinq
         /// </summary>
         /// <param name="e">The IEnumerable to iterate. Should be a ValueType array or collection.</param>
         /// <returns>ValueType with the sum value.</returns>
-        public static ValueType Sum(this IEnumerable e)
-        {
-            return Aggregate(e, 0, (i1, i2) => (int)i1 + (int)i2) as ValueType;
-        }
+        public static ValueType Sum(this IEnumerable e) => Aggregate(e, 0, (i1, i2) => (int)i1 + (int)i2) as ValueType;
 
 
         /// <summary>
@@ -208,10 +199,7 @@ namespace System.Collections.NanoLinq
         /// <param name="e">The IEnumerable to iterate. Should be a ValueType array or collection.</param>
         /// <param name="s">Optional. A selector delegate used to select the value from an object.</param>
         /// <returns>ValueType with the sum value.</returns>
-        public static ValueType Sum(this IEnumerable e, Selector s)
-        {
-            return Aggregate(e, 0, (o1, o2) => (int)s(o1) + (int)s(o2)) as ValueType;
-        }
+        public static ValueType Sum(this IEnumerable e, Selector s) => Aggregate(e, 0, (o1, o2) => (int)s(o1) + (int)s(o2)) as ValueType;
 
 
         /// <summary>
@@ -221,10 +209,7 @@ namespace System.Collections.NanoLinq
         /// <param name="seed">The initial value to start the sum. This must be the same type as used in the aggregate delegate.</param>
         /// <param name="a">The aggregate delegate used to perform the sum operation on the elements.</param>
         /// <returns></returns>
-        public static ValueType Sum(this IEnumerable e, ValueType seed, Aggregate a)
-        {
-            return Aggregate(e, seed, a) as ValueType;
-        }
+        public static ValueType Sum(this IEnumerable e, ValueType seed, Aggregate a) => Aggregate(e, seed, a) as ValueType;
 
         /// <summary>
         /// Convenience extension to wrap Aggregate for numeric operations with an initial seed value of 0.
@@ -234,10 +219,7 @@ namespace System.Collections.NanoLinq
         /// <param name="a">The aggregate delegate used to perform the sum operation on the elements.</param>
         /// <param name="s">Optional. A selector delegate used to select the value from an object.</param>
         /// <returns>ValueType with the sum value.</returns>
-        public static ValueType Sum(this IEnumerable e, ValueType seed, Aggregate a, Selector s)
-        {
-            return Aggregate(e, seed, a, s) as ValueType;
-        }
+        public static ValueType Sum(this IEnumerable e, ValueType seed, Aggregate a, Selector s) => Aggregate(e, seed, a, s) as ValueType;
 
         /// <summary>
         /// Returns a wrapper around an IEnumerable to return elements matching the requested type.
@@ -245,11 +227,7 @@ namespace System.Collections.NanoLinq
         /// <param name="e">The IEnumerable object of which you want to get objects of a specified type.</param>
         /// <param name="t">The type of objects you want returned.</param>
         /// <returns>An IEnumerable which will return only objects castable to the requested type.</returns>
-        public static IEnumerable OfType(this IEnumerable e, Type t)
-        {
-            return new ConditionalEnumerable(e, o => t.IsInstanceOfType(o));
-        }
-
+        public static IEnumerable OfType(this IEnumerable e, Type t) => new ConditionalEnumerable(e, o => t.IsInstanceOfType(o));
 
         /// <summary>
         /// Copies the elements from an IEnumerable into an Array of objects. A simple quick sort
@@ -261,10 +239,7 @@ namespace System.Collections.NanoLinq
         /// <param name="s">The delegate used to select which property in an object should be compared.</param>
         /// <returns>A new IEnumerable with elements ordered by the property specified in the selector delegate.</returns>
         [Obsolete("For performance reasons, consider passing an explicit Comparer delegate.")]
-        public static IEnumerable OrderBy(this IEnumerable e, Selector s)
-        {
-            return OrderBy(e, s, Compare);
-        }
+        public static IEnumerable OrderBy(this IEnumerable e, Selector s) => OrderBy(e, s, Compare);
 
 
         /// <summary>
@@ -279,10 +254,9 @@ namespace System.Collections.NanoLinq
         /// <returns>A new IEnumerable with elements ordered by the property specified in the selector delegate.</returns>
         public static IEnumerable OrderBy(this IEnumerable e, Selector s, Comparer c)
         {
-            ICollection d = e as ICollection;
             object[] data;
 
-            if (null == d)
+            if (!(e is ICollection d))
             {
                 var temp = new ArrayList();
                 foreach (var o in e)
@@ -298,7 +272,7 @@ namespace System.Collections.NanoLinq
                     return d;
 
                 data = new object[d.Count];
-                d.CopyTo((object[])data, 0);
+                d.CopyTo(data, 0);
             }
 
             return MergeSort(data, s, c);
@@ -324,18 +298,11 @@ namespace System.Collections.NanoLinq
             int i = 0, j = 0, h = 0;
 
             while (i < left.Length || j < right.Length)
-            {
-                if (i == left.Length) result[h++] = right[j++];
-                else if (j == right.Length) result[h++] = left[i++];
-                else if (c(s(left[i]), s(right[j])) < 0)
-                {
-                    result[h++] = left[i++];
-                }
-                else
-                {
-                    result[h++] = right[j++];
-                }
-            }
+                result[h++] = 
+                    i == left.Length ? 
+                    right[j++] : j == right.Length ? 
+                    left[i++] : c(s(left[i]), s(right[j])) < 0 ?
+                    left[i++] : right[j++];
         }
 
         private static object[] SplitArray(object[] array, int start, int end)
@@ -347,15 +314,14 @@ namespace System.Collections.NanoLinq
 
         private static int Compare(object a, object b)
         {
-            IComparable ca = a as IComparable;
-            if (null != ca)
+            if (a is IComparable ca)
                 return ca.CompareTo(b);
 
             MethodInfo mi = a.GetType().GetMethod("CompareTo", new Type[] { typeof(object) });
             if (null != mi)
                 return (int)mi.Invoke(a, new[] { b });
 
-            if (object.Equals(a, b))
+            if (Equals(a, b))
                 return 0;
 
             if (a is ValueType && b is ValueType)
@@ -384,10 +350,7 @@ namespace System.Collections.NanoLinq
         /// <param name="e">The IEnumerable object from which you want to get items matching a condition.</param>
         /// <param name="p">The predicate which will be applied to each element.</param>
         /// <returns>An IEnumerable which will return only objects which pass the predicate condition.</returns>
-        public static IEnumerable Where(this IEnumerable e, Predicate p)
-        {
-            return new ConditionalEnumerable(e, p);
-        }
+        public static IEnumerable Where(this IEnumerable e, Predicate p) => new ConditionalEnumerable(e, p);
 
     }
 }

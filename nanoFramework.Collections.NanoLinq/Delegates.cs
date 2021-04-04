@@ -1,6 +1,6 @@
 using System;
 
-namespace System.Collections.NanoLinq.ParallelExtensions
+namespace nanoFramework.NanoLinq.ParallelExtensions
 {
     public delegate void Action(object o);
 }

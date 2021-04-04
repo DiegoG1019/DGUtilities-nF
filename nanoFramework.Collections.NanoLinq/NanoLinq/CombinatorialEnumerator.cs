@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace System.Collections.NanoLinq
+namespace nanoFramework.NanoLinq
 {
     /// <summary>
     /// Because the yield statement is broken for current C# and NETMF 4.1 we have to

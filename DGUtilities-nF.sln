@@ -7,6 +7,8 @@ Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "DiegoG.nanoFramework.Loggin
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "nanoFramework.Collections.NanoLinq", "nanoFramework.Collections.NanoLinq\nanoFramework.Collections.NanoLinq.nfproj", "{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}"
 EndProject
+Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "DiegoG.Utilities", "DiegoG.Utilities\DiegoG.Utilities.nfproj", "{1B7A224B-001E-43D8-AFB2-FA16286A1745}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,12 @@ Global
 		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87562C09-E42E-4949-9EEB-4D60EA9EE8B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7A224B-001E-43D8-AFB2-FA16286A1745}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 
-namespace System.Collections.NanoLinq
+namespace nanoFramework.NanoLinq
 {
     [Serializable]
     [DebuggerDisplay("Count = {Count}")]

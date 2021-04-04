@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 
-namespace System.Collections.NanoLinq.ParallelExtensions
+namespace nanoFramework.NanoLinq.ParallelExtensions
 {
     public static partial class ParallelExtensions
     {
